@@ -45,21 +45,14 @@ func main() {
 	xMax := len(_map[0])
 	yMax := len(_map)
 
-	// fmt.Println("starting at", x+1, "x", y+1)
-
 	total := 1
 	for {
 		if x+xVel < 0 || x+xVel >= xMax || y+yVel < 0 || y+yVel >= yMax {
-			// fmt.Println("stopping")
 			break
 		}
 
-		// fmt.Println("next", string(_map[y+yVel][x+xVel]))
-
 		if _map[y+yVel][x+xVel] == '#' {
 			turnRight(&xVel, &yVel)
-			// fmt.Println("turned right at", x+1, "x", y+1)
-			// fmt.Println("xVel", xVel, "yVel", yVel)
 			continue
 		}
 
@@ -71,8 +64,6 @@ func main() {
 		if _map[y][x] == '.' {
 			total += 1
 		}
-
-		// fmt.Println("moved to", x+1, "x", y+1)
 	}
 
 	fmt.Println("total", total)
