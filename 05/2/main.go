@@ -42,7 +42,6 @@ func main() {
 	i := 0
 	for scanner.Scan() {
 		line := scanner.Text()
-		// updates = append(updates, {})
 		for _, stringValue := range strings.Split(line, ",") {
 			v, err := strconv.Atoi(stringValue)
 			check(err)
