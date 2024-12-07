@@ -36,9 +36,6 @@ func checkForWord(dir string, word string, rows [][]rune, row int, col int) bool
 		return false
 	}
 
-	// fmt.Println()
-	// fmt.Println("checking for", word, "starting at x", col+1, "y", row+1, dir)
-
 	char := rows[row][col]
 
 	if byte(char) == word[0] && len(word) == 1 {
@@ -46,8 +43,6 @@ func checkForWord(dir string, word string, rows [][]rune, row int, col int) bool
 	}
 
 	if byte(char) != word[0] {
-		// fmt.Printf("skipping %c", char)
-		// fmt.Println()
 		return false
 	}
 
@@ -60,51 +55,43 @@ func checkForWord(dir string, word string, rows [][]rune, row int, col int) bool
 
 	// up-left diagonal
 	if (any || dir == "up-left") && row+1 >= wordLength && col+1 >= wordLength {
-		// fmt.Println("checking up-left")
 		return checkForWord("up-left", word[1:], rows, row-1, col-1)
 	}
 
 	// up
 	if (any || dir == "up") && row+1 >= wordLength {
-		// fmt.Println("checking up")
 		return checkForWord("up", word[1:], rows, row-1, col)
 	}
 
 	// up-right diagonal
 	if (any || dir == "up-right") && row+1 >= wordLength && numCols-col+1 > wordLength {
-		// fmt.Println("checking up-right")
 		return checkForWord("up-right", word[1:], rows, row-1, col+1)
 	}
 
 	// right
 	if (any || dir == "right") && numCols-col+1 > wordLength {
-		// fmt.Println("checking right", word[1:])
 		return checkForWord("right", word[1:], rows, row, col+1)
 	}
 
 	// down right diagonal
 	if (any || dir == "down-right") && numRows-row+1 > wordLength && numCols-col+1 > wordLength {
-		// fmt.Println("checking down-right")
 		return checkForWord("down-right", word[1:], rows, row+1, col+1)
 	}
 
 	// down
 	if (any || dir == "down") && numRows-row+1 > wordLength {
-		// fmt.Println("checking down")
 		return checkForWord("down", word[1:], rows, row+1, col)
 
 	}
 
 	// down-left diagonal
 	if (any || dir == "down-left") && numRows-row+1 > wordLength && col+1 >= wordLength {
-		// fmt.Println("checking down-left")
 		return checkForWord("down-left", word[1:], rows, row+1, col-1)
 
 	}
 
 	// left
 	if (any || dir == "left") && col+1 >= wordLength {
-		// fmt.Println("checking left")
 		return checkForWord("left", word[1:], rows, row, col-1)
 	}
 
@@ -124,15 +111,12 @@ func main() {
 			if row > 0 && col > 0 && row <= numRows-2 && col <= numCols-2 {
 				if checkForWord("any", "A", rows, row, col) {
 					if checkForX(rows, row, col) {
-						// fmt.Println("found at", row+1, col+1)
 						count += 1
 					}
 				}
 			}
 		}
 	}
-
-	// fmt.Println("count", count)
 }
 
 func checkForX(rows [][]rune, row int, col int) bool {
