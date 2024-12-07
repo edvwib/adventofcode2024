@@ -86,19 +86,7 @@ func test(testValue int, currentValue int, values []int, initialValueCount int) 
 			{
 				concatenated, err := strconv.Atoi(strconv.Itoa(currentValue) + strconv.Itoa(nextValue))
 				check(err)
-
-				maybe := false
-				possible := false
-				maybe, possible = test(testValue, concatenated, nextValues[0:], initialValueCount)
-
-				if maybe {
-					maybeCount += 1
-				}
-				if possible {
-					possibleCount += 1
-				}
-
-				continue
+				newValue = concatenated
 			}
 		}
 
