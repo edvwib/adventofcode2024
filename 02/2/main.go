@@ -35,10 +35,6 @@ func main() {
 
 		inc := checkLevels(levels, 0)
 		safeReports += inc
-		// if inc == 1 {
-		// 	fmt.Println("safe")
-		// }
-		// fmt.Println()
 	}
 
 	fmt.Println("safe reports: ", safeReports)
@@ -53,12 +49,8 @@ func checkLevels(levels []int, offset int) int {
 
 	increasing := false
 
-	// fmt.Println("offset", offset, levelCount, "levels", levels)
-
 	currentLevels := remove(levels, offset)
 	levelCount = len(currentLevels)
-	// fmt.Println("currentLevels", currentLevels)
-	// fmt.Println("levels", levels)
 
 	for i, level := range currentLevels {
 		if i+1 >= levelCount {
