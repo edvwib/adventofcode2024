@@ -11,6 +11,9 @@ Benchmark 1: ./main
 ```
 hyperfine -N --warmup 5 ./main
 
+Benchmark 1: ./main
+  Time (mean ± σ):      17.4 ms ±   0.6 ms    [User: 14.3 ms, System: 3.3 ms]
+  Range (min … max):    16.2 ms …  19.7 ms    160 runs
 ```
 
 > Apple M2 Pro, 32 GB
